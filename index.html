@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yiskang.github.io/blog"></form>
@@ -111,22 +111,22 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 打開 Terminal，然後切換目錄到目標專案的根目錄，最後打上這一行</span></div><div class="line">$ git submodule add https://github.com/skywinder/ActionSheetPicker-3.0.git</div></pre></td></tr></table></figure>
 </li>
 <li><p>用 Finder 打開專案目錄底下的 ActionSheetPicker-3.0 資料夾，然後將 /CoreActionSheetPicker/CoreActionSheetPicker.xcodeproj 拖到 Xcode 的 Project Navigator 裡面。</p>
-<div style="width:25%;margin:0 auto;display:block;"><img src="/images/Dropdwn.png" alt="ProjectSetting"></div>
+<div style="width:25%;margin:0 auto;display:block;"><img src="images/Dropdwn.png" alt="ProjectSetting"></div>
 </li>
 <li><p>用滑數點擊 Xcode Project Navigator 裡最上面的專案圖案（藍色的 Icon），右邊跳出專案設定，如下圖：</p>
-<div style="width:70%;margin:0 auto;display:block;"><img src="/images/Dropdwn2.png" alt="ProjectSetting"></div>
+<div style="width:70%;margin:0 auto;display:block;"><img src="images/Dropdwn2.png" alt="ProjectSetting"></div>
 </li>
 <li><p>切換專案設定的標籤到 Build Phases，在 Target Dependancy 裡面新增 CoreActionSheetPicker.framework。</p>
-<div style="width:65%;margin:0 auto;display:block;"><img src="/images/Dropdwn3.png" alt="ProjectSetting"></div>
+<div style="width:65%;margin:0 auto;display:block;"><img src="images/Dropdwn3.png" alt="ProjectSetting"></div>
 </li>
 <li><p>一樣在 Build Phases 裡，新增一個 New Copy Files Phase，將其重新命名為 Copy Frameworks。</p>
-<div style="width:35%;margin:0 auto;display:block;"><img src="/images/Dropdwn4.png" alt="ProjectSetting"></div><br><div style="width:35%;margin:0 auto;display:block;"><img src="/images/Dropdwn5.png" alt="ProjectSetting"></div>
+<div style="width:35%;margin:0 auto;display:block;"><img src="images/Dropdwn4.png" alt="ProjectSetting"></div><br><div style="width:35%;margin:0 auto;display:block;"><img src="images/Dropdwn5.png" alt="ProjectSetting"></div>
 </li>
 <li><p>在 Copy Frameworks 裡，選擇 Destination 為 Frameworks，然後新增 CoreActionSheetPicker.framework。</p>
-<div style="width:65%;margin:0 auto;display:block;"><img src="/images/Dropdwn6.png" alt="ProjectSetting"></div>
+<div style="width:65%;margin:0 auto;display:block;"><img src="images/Dropdwn6.png" alt="ProjectSetting"></div>
 </li>
 <li><p>隨便新增一個 Objective-C 檔案到專案裡面，然後 Xcode 會詢問是不是要新增 Objective-C Bridge Header，請按「是」。</p>
-<div style="width:60%;margin:0 auto;display:block;"><img src="/images/Dropdwn7.png" alt="ProjectSetting"></div><br><div style="width:60%;margin:0 auto;display:block;"><img src="/images/Dropdwn8.png" alt="ProjectSetting"></div>
+<div style="width:60%;margin:0 auto;display:block;"><img src="images/Dropdwn7.png" alt="ProjectSetting"></div><br><div style="width:60%;margin:0 auto;display:block;"><img src="images/Dropdwn8.png" alt="ProjectSetting"></div>
 </li>
 <li><p>在「專案名稱-Bridging-Header.h」裡新增下面這行：</p>
 <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#import <span class="meta-string">"CoreActionSheetPicker/CoreActionSheetPicker.h"</span></span></div></pre></td></tr></table></figure>
@@ -138,14 +138,13 @@
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        。。。。。</div><div class="line">        <span class="comment">//指定下拉符號圖片</span></div><div class="line">        <span class="keyword">var</span> img = <span class="type">UIImage</span>(named: <span class="string">"dwn"</span>)</div><div class="line">        <span class="keyword">self</span>.textField.rightView = <span class="type">UIImageView</span>(image: img)</div><div class="line"></div><div class="line">        <span class="comment">//設定圖片填滿右視圖</span></div><div class="line">        <span class="keyword">self</span>.textField.rightView!.contentMode = <span class="type">UIViewContentMode</span>.<span class="type">ScaleAspectFit</span></div><div class="line">        <span class="keyword">self</span>.textField.rightView!.clipsToBounds = <span class="literal">true</span></div><div class="line"></div><div class="line">        <span class="comment">//顯示下拉符號</span></div><div class="line">        <span class="keyword">self</span>.textField.rightViewMode = <span class="type">UITextFieldViewMode</span>.<span class="type">Always</span></div><div class="line"></div><div class="line">        <span class="comment">//建立委托</span></div><div class="line">        <span class="keyword">self</span>.textField.delegate = <span class="keyword">self</span></div><div class="line"></div><div class="line">        <span class="comment">//設定使用者點擊事件</span></div><div class="line">        <span class="keyword">self</span>.textField.addTarget(<span class="keyword">self</span>, action: <span class="string">"selectClicked:"</span>, forControlEvents: <span class="type">UIControlEvents</span>.<span class="type">TouchDown</span>);</div><div class="line">        。。。。</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>最後建立使用者與 UITextField 的互動事件，以及設定 ActionSheetPicker。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span>, <span class="title">UITextFieldDelegate</span> </span>&#123;</div><div class="line">        。。。。。</div><div class="line">        <span class="comment">//設定 textField 唯讀</span></div><div class="line">        <span class="function"><span class="keyword">func</span> <span class="title">textFieldShouldBeginEditing</span><span class="params">(textField: UITextField)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">              <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">//不讓使用者透過建盤輸入文字</span></div><div class="line">        <span class="function"><span class="keyword">func</span> <span class="title">textField</span><span class="params">(textField: UITextField, shouldChangedCharactersInRange range: NSRange, replacementString string: String)</span></span> &#123;</div><div class="line">              <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">//使用者點擊事件</span></div><div class="line">        <span class="function"><span class="keyword">func</span> <span class="title">selectClicked</span><span class="params">(sender: UITextField)</span></span> &#123;</div><div class="line">              <span class="type">ActionSheetStringPicker</span>.showPickerWithTitle(<span class="literal">nil</span>, rows: <span class="keyword">self</span>.dataArray, initialSelection: <span class="number">0</span>, doneBlock: &#123;</div><div class="line">                  picker, value, index <span class="keyword">in</span></div><div class="line">                  <span class="keyword">self</span>.textField.text = value</div><div class="line">                  <span class="keyword">return</span></div><div class="line">              &#125;, cancelBlock: &#123; </div><div class="line">                  <span class="type">ActionStringCancelBlock</span> <span class="keyword">in</span></div><div class="line">                  <span class="keyword">return</span></div><div class="line">              &#125;, origin: sender.superview)</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span>, <span class="title">UITextFieldDelegate</span> </span>&#123;</div><div class="line">        。。。。。</div><div class="line">        <span class="comment">//設定 textField 唯讀</span></div><div class="line">        <span class="function"><span class="keyword">func</span> <span class="title">textFieldShouldBeginEditing</span><span class="params">(textField: UITextField)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">              <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">//不讓使用者透過建盤輸入文字</span></div><div class="line">        <span class="function"><span class="keyword">func</span> <span class="title">textField</span><span class="params">(textField: UITextField, shouldChangedCharactersInRange range: NSRange, replacementString string: String)</span></span> &#123;</div><div class="line">              <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">//使用者點擊事件</span></div><div class="line">        <span class="function"><span class="keyword">func</span> <span class="title">selectClicked</span><span class="params">(sender: UITextField)</span></span> &#123;</div><div class="line">              <span class="type">ActionSheetStringPicker</span>.showPickerWithTitle(<span class="literal">nil</span>, rows: <span class="keyword">self</span>.dataArray, initialSelection: <span class="number">0</span>, doneBlock: &#123;</div><div class="line">                  picker, value, index <span class="keyword">in</span></div><div class="line">                  <span class="keyword">self</span>.textField.text = value</div><div class="line">                  <span class="keyword">return</span></div><div class="line">              &#125;, cancelBlock: &#123; </div><div class="line">                  <span class="type">ActionStringCancelBlock</span> <span class="keyword">in</span></div><div class="line">                  <span class="keyword">return</span></div><div class="line">              &#125;, origin: sender.superview)</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yiskang.github.io/blog/2015/07/17/iOS-Pulldown-List-Dropdown-List、Combobox-by-Swift/" data-id="cixyfsjpv0009g1x7jlkft0ll" class="article-share-link">Share</a>
+      <a data-url="http://yiskang.github.io/blog/2015/07/17/iOS-Pulldown-List-Dropdown-List、Combobox-by-Swift/" data-id="cixygi2je0009nsx7og80fwct" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
@@ -192,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yiskang.github.io/blog/2015/07/17/Add-UITextField-on-UIView-Programmitically-by-Swift/" data-id="cixyfsjp70000g1x7v0c9527d" class="article-share-link">Share</a>
+      <a data-url="http://yiskang.github.io/blog/2015/07/17/Add-UITextField-on-UIView-Programmitically-by-Swift/" data-id="cixygi2ir0000nsx7uywwfryy" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UI/">UI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
@@ -236,7 +235,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">%USERPROFILE%\AppData\Local\Atlassian\SourceTree\git_local\bin</div></pre></td></tr></table></figure>
 </li>
 <li><p>將 Git 執行檔的位置加到使用者環境變數（User Environment Variables）：</p>
-<div style="width:300px;margin:0 auto;display:block;"><br><img src="/images/GitPath.jpg" alt="GitImg"><br></div></li>
+<div style="width:300px;margin:0 auto;display:block;"><br><img src="images/GitPath.jpg" alt="GitImg"><br></div></li>
 <li>重開命令提示字元（Command Prompt）或是 PowerShell，就可以開心使用摟～</li>
 </ol>
 <p>Reference: <a href="https://answers.atlassian.com/questions/245850/how-to-run-a-git-command-as-a-custom-action" target="_blank" rel="external">How to run a git command as a custom action?</a></p>
@@ -244,7 +243,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yiskang.github.io/blog/2015/05/06/Use-Atlassian-Source-Tree-embedded-git-in-Windows/" data-id="cixyfsjpp0005g1x7atk2qlw1" class="article-share-link">Share</a>
+      <a data-url="http://yiskang.github.io/blog/2015/05/06/Use-Atlassian-Source-Tree-embedded-git-in-Windows/" data-id="cixygi2j90005nsx7m8wcvje4" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
@@ -283,11 +282,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>最近萬惡的微軟（M$）突然大爆發，一直開源又將 Visual Studio 2013 Professional 釋出為 Visual Studio Community 版，免費提供大家使用。用 Visual Studio 2012 也好一陣子了，所以我想換口味試看看～ :P 但裝好 2013 拿來 Debug Revit 2016 增益集（Addin）的時候，卻發現 Revit 掛掉 Crash 了！</p>
-<div style="width:600px;margin:0 auto;display:block;"><br><img src="/images/RevitDebuggingError.jpg" alt="RevitImg"><br></div><br>所幸拜了 Google 大神後發現了解法，只要將使用除錯器的相容模式（Debugging in  Managed Compatibility Mode）就可以解決了！以下是我所做的步㵵供大家參考：<br>1. 到工具（Tools） &gt; 選項（Options），紅框所選位置：<br><div style="width:300px;margin:0 auto;display:block;"><br><img src="/images/RevitDebuggingError2.jpg" alt="RevitImg"><br></div>
+<div style="width:600px;margin:0 auto;display:block;"><br><img src="images/RevitDebuggingError.jpg" alt="RevitImg"><br></div><br>所幸拜了 Google 大神後發現了解法，只要將使用除錯器的相容模式（Debugging in  Managed Compatibility Mode）就可以解決了！以下是我所做的步㵵供大家參考：<br>1. 到工具（Tools） &gt; 選項（Options），紅框所選位置：<br><div style="width:300px;margin:0 auto;display:block;"><br><img src="images/RevitDebuggingError2.jpg" alt="RevitImg"><br></div>
 
 <ol>
 <li><p>點選除錯（Debugging）項目，在點選一般（General），最後將使用相容模式（Use Managed Compatibility Mode）勾選起來，按下確認（OK）：</p>
-<div style="width:600px;margin:0 auto;display:block;"><br><img src="/images/RevitDebuggingError3.jpg" alt="RevitImg"><br></div>
+<div style="width:600px;margin:0 auto;display:block;"><br><img src="images/RevitDebuggingError3.jpg" alt="RevitImg"><br></div>
 </li>
 <li><p>可以開心使用 Visual Studio 2013 對 Revit 增益集進行除錯（Trace Debugging）摟～</p>
 </li>
@@ -297,7 +296,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yiskang.github.io/blog/2015/05/06/Revit-debugging-on-Visual-Studio-2013/" data-id="cixyfsjpb0001g1x7rxnkp3ob" class="article-share-link">Share</a>
+      <a data-url="http://yiskang.github.io/blog/2015/05/06/Revit-debugging-on-Visual-Studio-2013/" data-id="cixygi2j40004nsx78eoq1lou" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Plugin/">Plugin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Revit/">Revit</a></li></ul>
@@ -343,7 +342,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yiskang.github.io/blog/2015/05/02/Mission-Control-沒有反應怎麼辦？/" data-id="cixyfsjpl0004g1x72ymr3e15" class="article-share-link">Share</a>
+      <a data-url="http://yiskang.github.io/blog/2015/05/02/Mission-Control-沒有反應怎麼辦？/" data-id="cixygi2iw0001nsx744bn2es4" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OS-X/">OS X</a></li></ul>
@@ -399,7 +398,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yiskang.github.io/blog/2015/04/29/在Terminal開啟Sublime/" data-id="cixyfsjpw000ag1x76fyr3u60" class="article-share-link">Share</a>
+      <a data-url="http://yiskang.github.io/blog/2015/04/29/在Terminal開啟Sublime/" data-id="cixygi2ji000ansx7j0jabnzj" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
@@ -459,7 +458,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yiskang.github.io/blog/2015/04/16/git-submodule/" data-id="cixyfsjpr0006g1x75s1heaab" class="article-share-link">Share</a>
+      <a data-url="http://yiskang.github.io/blog/2015/04/16/git-submodule/" data-id="cixygi2jb0006nsx76a20p4n2" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
@@ -478,7 +477,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">Catégories</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/">Tech</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/BIM/">BIM</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/Mac-OS/">Mac OS</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/OS-X/">OS X</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/iOS/">iOS</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Tech/iOS/UI/">UI</a></li></ul></li></ul></li></ul>
     </div>
@@ -488,7 +487,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">Mot-clés</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OS-X/">OS X</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Objective-C/">Objective-C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Plugin/">Plugin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Revit/">Revit</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Swift/">Swift</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UI/">UI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iOS/">iOS</a></li></ul>
     </div>
@@ -498,7 +497,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
+    <h3 class="widget-title">Nuage de mot-clés</h3>
     <div class="widget tagcloud">
       <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/OS-X/" style="font-size: 10px;">OS X</a> <a href="/tags/Objective-C/" style="font-size: 10px;">Objective-C</a> <a href="/tags/Plugin/" style="font-size: 10px;">Plugin</a> <a href="/tags/Revit/" style="font-size: 10px;">Revit</a> <a href="/tags/Swift/" style="font-size: 20px;">Swift</a> <a href="/tags/UI/" style="font-size: 10px;">UI</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/iOS/" style="font-size: 20px;">iOS</a>
     </div>
@@ -517,7 +516,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -554,7 +553,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 Eason Kang<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
