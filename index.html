@@ -48,7 +48,7 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/blog/atom.xml" title="RSS Feed"></a>
         
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
@@ -138,13 +138,14 @@
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        。。。。。</div><div class="line">        <span class="comment">//指定下拉符號圖片</span></div><div class="line">        <span class="keyword">var</span> img = <span class="type">UIImage</span>(named: <span class="string">"dwn"</span>)</div><div class="line">        <span class="keyword">self</span>.textField.rightView = <span class="type">UIImageView</span>(image: img)</div><div class="line"></div><div class="line">        <span class="comment">//設定圖片填滿右視圖</span></div><div class="line">        <span class="keyword">self</span>.textField.rightView!.contentMode = <span class="type">UIViewContentMode</span>.<span class="type">ScaleAspectFit</span></div><div class="line">        <span class="keyword">self</span>.textField.rightView!.clipsToBounds = <span class="literal">true</span></div><div class="line"></div><div class="line">        <span class="comment">//顯示下拉符號</span></div><div class="line">        <span class="keyword">self</span>.textField.rightViewMode = <span class="type">UITextFieldViewMode</span>.<span class="type">Always</span></div><div class="line"></div><div class="line">        <span class="comment">//建立委托</span></div><div class="line">        <span class="keyword">self</span>.textField.delegate = <span class="keyword">self</span></div><div class="line"></div><div class="line">        <span class="comment">//設定使用者點擊事件</span></div><div class="line">        <span class="keyword">self</span>.textField.addTarget(<span class="keyword">self</span>, action: <span class="string">"selectClicked:"</span>, forControlEvents: <span class="type">UIControlEvents</span>.<span class="type">TouchDown</span>);</div><div class="line">        。。。。</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
 <li><p>最後建立使用者與 UITextField 的互動事件，以及設定 ActionSheetPicker。</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span>, <span class="title">UITextFieldDelegate</span> </span>&#123;</div><div class="line">        。。。。。</div><div class="line">        <span class="comment">//設定 textField 唯讀</span></div><div class="line">        <span class="function"><span class="keyword">func</span> <span class="title">textFieldShouldBeginEditing</span><span class="params">(textField: UITextField)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">              <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">//不讓使用者透過建盤輸入文字</span></div><div class="line">        <span class="function"><span class="keyword">func</span> <span class="title">textField</span><span class="params">(textField: UITextField, shouldChangedCharactersInRange range: NSRange, replacementString string: String)</span></span> &#123;</div><div class="line">              <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">//使用者點擊事件</span></div><div class="line">        <span class="function"><span class="keyword">func</span> <span class="title">selectClicked</span><span class="params">(sender: UITextField)</span></span> &#123;</div><div class="line">              <span class="type">ActionSheetStringPicker</span>.showPickerWithTitle(<span class="literal">nil</span>, rows: <span class="keyword">self</span>.dataArray, initialSelection: <span class="number">0</span>, doneBlock: &#123;</div><div class="line">                  picker, value, index <span class="keyword">in</span></div><div class="line">                  <span class="keyword">self</span>.textField.text = value</div><div class="line">                  <span class="keyword">return</span></div><div class="line">              &#125;, cancelBlock: &#123; </div><div class="line">                  <span class="type">ActionStringCancelBlock</span> <span class="keyword">in</span></div><div class="line">                  <span class="keyword">return</span></div><div class="line">              &#125;, origin: sender.superview)</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span>, <span class="title">UITextFieldDelegate</span> </span>&#123;</div><div class="line">        。。。。。</div><div class="line">        <span class="comment">//設定 textField 唯讀</span></div><div class="line">        <span class="function"><span class="keyword">func</span> <span class="title">textFieldShouldBeginEditing</span><span class="params">(textField: UITextField)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">              <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">//不讓使用者透過建盤輸入文字</span></div><div class="line">        <span class="function"><span class="keyword">func</span> <span class="title">textField</span><span class="params">(textField: UITextField, shouldChangedCharactersInRange range: NSRange, replacementString string: String)</span></span> &#123;</div><div class="line">              <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">//使用者點擊事件</span></div><div class="line">        <span class="function"><span class="keyword">func</span> <span class="title">selectClicked</span><span class="params">(sender: UITextField)</span></span> &#123;</div><div class="line">              <span class="type">ActionSheetStringPicker</span>.showPickerWithTitle(<span class="literal">nil</span>, rows: <span class="keyword">self</span>.dataArray, initialSelection: <span class="number">0</span>, doneBlock: &#123;</div><div class="line">                  picker, value, index <span class="keyword">in</span></div><div class="line">                  <span class="keyword">self</span>.textField.text = value</div><div class="line">                  <span class="keyword">return</span></div><div class="line">              &#125;, cancelBlock: &#123; </div><div class="line">                  <span class="type">ActionStringCancelBlock</span> <span class="keyword">in</span></div><div class="line">                  <span class="keyword">return</span></div><div class="line">              &#125;, origin: sender.superview)</div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yiskang.github.io/blog/blog/2015/07/17/iOS-Pulldown-List-Dropdown-List、Combobox-by-Swift/" data-id="cixyh1cvu0009ixx73kmsxdbv" class="article-share-link">Share</a>
+      <a data-url="http://yiskang.github.io/blog/blog/2015/07/17/iOS-Pulldown-List-Dropdown-List、Combobox-by-Swift/" data-id="cixyhmykx000biex7nff257lt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Objective-C/">Objective-C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/iOS/">iOS</a></li></ul>
@@ -191,7 +192,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yiskang.github.io/blog/blog/2015/07/17/Add-UITextField-on-UIView-Programmitically-by-Swift/" data-id="cixyh1cvc0000ixx7tyfjy2r8" class="article-share-link">Share</a>
+      <a data-url="http://yiskang.github.io/blog/blog/2015/07/17/Add-UITextField-on-UIView-Programmitically-by-Swift/" data-id="cixyhmykk0004iex7ugyoauxx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Swift/">Swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/UI/">UI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/iOS/">iOS</a></li></ul>
@@ -243,7 +244,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yiskang.github.io/blog/blog/2015/05/06/Use-Atlassian-Source-Tree-embedded-git-in-Windows/" data-id="cixyh1cvs0006ixx71qg2ophp" class="article-share-link">Share</a>
+      <a data-url="http://yiskang.github.io/blog/blog/2015/05/06/Use-Atlassian-Source-Tree-embedded-git-in-Windows/" data-id="cixyhmykn0005iex7nrzh8u07" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Git/">Git</a></li></ul>
@@ -296,7 +297,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yiskang.github.io/blog/blog/2015/05/06/Revit-debugging-on-Visual-Studio-2013/" data-id="cixyh1cvm0004ixx7m9ekyn82" class="article-share-link">Share</a>
+      <a data-url="http://yiskang.github.io/blog/blog/2015/05/06/Revit-debugging-on-Visual-Studio-2013/" data-id="cixyhmykb0001iex7v28mllhx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Plugin/">Plugin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Revit/">Revit</a></li></ul>
@@ -342,7 +343,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yiskang.github.io/blog/blog/2015/05/02/Mission-Control-沒有反應怎麼辦？/" data-id="cixyh1cvg0001ixx7upq1lprh" class="article-share-link">Share</a>
+      <a data-url="http://yiskang.github.io/blog/blog/2015/05/02/Mission-Control-沒有反應怎麼辦？/" data-id="cixyhmyk70000iex7ptm8ghah" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/OS-X/">OS X</a></li></ul>
@@ -398,7 +399,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yiskang.github.io/blog/blog/2015/04/29/在Terminal開啟Sublime/" data-id="cixyh1cvx000bixx7vrjnse9l" class="article-share-link">Share</a>
+      <a data-url="http://yiskang.github.io/blog/blog/2015/04/29/在Terminal開啟Sublime/" data-id="cixyhmykw000aiex7nkl0qomq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/Hexo/">Hexo</a></li></ul>
@@ -458,7 +459,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yiskang.github.io/blog/blog/2015/04/16/git-submodule/" data-id="cixyh1cvq0005ixx733jjh6bp" class="article-share-link">Share</a>
+      <a data-url="http://yiskang.github.io/blog/blog/2015/04/16/git-submodule/" data-id="cixyhmykr0006iex74u5hkmcb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/git/">git</a></li></ul>
